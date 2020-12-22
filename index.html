@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title></title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style type="text/css">
+      </style>
+   </head>
+   <body>
+      <center>
+      <div class="container">
+      <br><br>
+      <center>
+         <h3>AhmetBakiMms</h3>
+         <br>
+         <input type="file" id="imageFile" /><br>
+         <br>
+         <button onclick="ResizeImage()" class="button">Gen</button><br><br>
+         <a href="" download="" id="ahref">Download</a><br>
+         <img src="" id="output" ><br>
+         <br><br>
+      </center>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>     
+         $("ahref").hide();
+         var width = prompt("widht");
+         var height = prompt("height");
+         
+         function ResizeImage() {
+             var filesToUpload = document.getElementById('imageFile').files;
+             var file = filesToUpload[0];
+             $("ahref").show();
+             var img = document.createElement("img");
+             var reader = new FileReader();
+             reader.onload = function(e) {
+                 img.src = e.target.result;
+                 var canvas = document.createElement("canvas");
+                 var ctx = canvas.getContext("2d");
+                 ctx.drawImage(img, 0, 0);
+                 canvas.width = width;
+                 canvas.height = height;
+                 var ctx = canvas.getContext("2d");
+                 ctx.drawImage(img, 0, 0, width, height);
+                 var dataurl = canvas.toDataURL("image/png");
+                 document.getElementById('output').src = dataurl;
+                 var urldata22 = document.getElementById('output').src;
+                 $("#ahref").prop("href", urldata22);
+             }
+             // Load files into file reader
+             reader.readAsDataURL(file);
+         }
+         
+      </script>
+   </body>
+</html>
