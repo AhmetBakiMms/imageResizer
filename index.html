@@ -43,7 +43,7 @@
                  canvas.height = height;
                  var ctx = canvas.getContext("2d");
                  ctx.drawImage(img, 0, 0, width, height);
-                 var dataurl = canvas.toDataURL("image/png");
+                 var dataurl = canvas.toDataURL("image/webp");
                  document.getElementById('output').src = dataurl;
                  var urldata22 = document.getElementById('output').src;
                  $("#ahref").prop("href", urldata22);
